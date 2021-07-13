@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uas Gusti Maulana Rizkia</title>
+    <style>
+      button {
+        padding: 8px;
+        display: block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gusti Maulana Rizkia</h1>
+    <table cellspacing="14">
+      <tr>
+        <td>Ruang</td>
+        <td><input type="text" name="ruang" id="ruang" /></td>
+      </tr>
+      <tr>
+        <td>Kode</td>
+        <td><input type="text" name="kode" id="kode" /></td>
+      </tr>
+      <tr>
+        <td>Jumlah Peserta</td>
+        <td><input type="text" name="jml" id="jml" /></td>
+      </tr>
+      <tr>
+        <td>Jenis Kursus</td>
+        <td><input type="text" name="jenis_kursus" id="jenis_kursus" /></td>
+      </tr>
+      <tr>
+        <td>Hari Belajar</td>
+        <td><input type="text" name="hari_bljr" id="hari_bljr" /></td>
+      </tr>
+      <tr>
+        <td><button type="button" onclick="proses()">Cetak</button></td>
+      </tr>
+      <tr>
+        <td><h2>Output from</h2></td>
+      </tr>
+      <tr>
+        <td>Jenis Kurusus : <span id="jns_kursus"></span></td>
+        <td>Kelas Kurusus : <span id="kls_kursus"></span></td>
+      </tr>
+      <tr>
+        <td>Hari Belajar : <span id="hari_bljr2"></span></td>
+        <td>jumlah Peserta : <span id="jml_peserta"></span></td>
+      </tr>
+      <tr>
+        <td>Biaya Tambahan : <span id="biaya_tambahan"></span></td>
+      </tr>
+      <tr>
+        <td>Biaya kursus : <span id="biaya_kursus"></span></td>
+      </tr>
+    </table>
+
+    <div id="hasil"></div>
+  </body>
+  <script>
+    let kelas = [
+      {
+        kode: "JV",
+        kelas: "Java",
+        peserta: 0,
+        biaya: 2000000,
+      },
+      {
+        kode: "PW",
+        kelas: "Pemogramman Web",
+        peserta: 0,
+        biaya: 1800000,
+      },
+      {
+        kode: "LN",
+        kelas: "Linux",
+        peserta: 0,
+        biaya: 2100000,
+      },
+      {
+        kode: "NT",
+        kelas: "Jaringan",
+        biaya: 1750000,
+      },
+    ];
+    let pencarian = {};
+    function proses() {
+      var ruang = document.getElementById("ruang").value;
+
+      var kode = document.getElementById("kode").value;
+      console.log(kode);
+      var jml = document.getElementById("jml").value;
+      var jenis_kursus = document.getElementById("jenis_kursus").value;
+      var hari_bljr = document.getElementById("hari_bljr").value;
+      if (kode.length > 0) {
+        switch (ruang) {
+          case "JV":
+            pencarian.kode = ruang;
+            break;
+          case "PW":
+            pencarian.kode = ruang;
+            break;
+          case "LN":
+            pencarian.kode = ruang;
+            break;
+          case "NT":
+            pencarian.kode = ruang;
+            break;
+          default:
+            pencarian.kode = "Kode Tidak Di Temukan";
+        }
+        for (let i = 0; i < kelas.length; i++) {
+          if (kelas[i].kode == kode) {
+            console.log(kelas[i]);
+            document.getElementById("jns_kursus").innerHTML = kelas[i].kelas;
+            document.getElementById("kls_kursus").innerHTML = ruang;
+            document.getElementById("hari_bljr2").innerHTML = hari_bljr;
+            document.getElementById("jml_peserta").innerHTML = jml;
+            document.getElementById("biaya_kursus").innerHTML = kelas[i].biaya;
+            let biaya_tambahan2 = 50000 + kelas[i].biaya;
+            if (jml < 5) {
+              document.getElementById("biaya_tambahan").innerHTML =
+                biaya_tambahan2;
+            } else {
+              document.getElementById("biaya_tambahan").innerHTML = "0";
+            }
+          } else {
+            // console.log("tidak ada ruang");
+          }
+          //   console.log(kelas[i].kode);
+        }
+        console.log(pencarian.kode);
+        console.log(jml);
+      }
+    }
+    function cetak() {
+      var nama = document.getElementById("nama").value;
+      document.getElementById("demo").innerHTML = "<b>" + nama + "</b>";
+    }
+  </script>
+</html>
