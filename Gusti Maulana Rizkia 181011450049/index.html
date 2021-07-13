@@ -120,7 +120,7 @@
             document.getElementById("hari_bljr2").innerHTML = hari_bljr;
             document.getElementById("jml_peserta").innerHTML = jml;
             document.getElementById("biaya_kursus").innerHTML = kelas[i].biaya;
-            let biaya_tambahan2 = 50000;
+            let biaya_tambahan2 = 50000 + kelas[i].biaya;
             if (jml < 5) {
               document.getElementById("biaya_tambahan").innerHTML =
                 biaya_tambahan2;
